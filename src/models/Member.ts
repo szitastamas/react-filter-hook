@@ -14,6 +14,6 @@ export class Member extends User implements IMember {
 
   get memberFor() {
     const milliseconds = Math.abs(new Date().getTime() - this.joinedAt.getTime());
-    return milliseconds / (1000 * 60 * 60 * 24);
+    return Math.ceil(milliseconds / (1000 * 60 * 60 * 24));
   }
 }

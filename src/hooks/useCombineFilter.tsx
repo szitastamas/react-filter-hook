@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 export function useCombineFilter<T>(initialArray: T[]) {
   type FilterCallback<T> = (array: T[]) => T[];
@@ -11,7 +11,6 @@ export function useCombineFilter<T>(initialArray: T[]) {
   const [filters, setFilters] = useState<Filter[]>([]);
 
   function applyFilters() {
-    console.log('Apply filters running');
     let filtered = [...initialArray];
 
     filters.forEach((item) => {
