@@ -11,13 +11,7 @@ export function useCombineFilter<T>(initialArray: T[]) {
   const [filters, setFilters] = useState<Filter[]>([]);
 
   function applyFilters() {
-    let filtered = [...initialArray];
-
-    filters.forEach((item) => {
-      filtered = item.callback(filtered);
-    });
-
-    return filtered;
+    return filters.reduce((acc, filter) => filter.callback(acc), initialArray)
   }
 
   const filteredData = useMemo(() => {
